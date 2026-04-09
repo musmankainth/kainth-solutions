@@ -11,6 +11,7 @@ import {
   Camera,
   Users,
   Code2,
+  MessageCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { companyInfo, socialLinks } from "@/lib/constants";
@@ -30,8 +31,12 @@ const services = [
   { label: "Web Development", href: "/services/web-development" },
   { label: "Mobile Apps", href: "/services/mobile-app-development" },
   { label: "Digital Marketing", href: "/services/digital-marketing" },
-  { label: "UI/UX Design", href: "/services/ui-ux-design" },
-  { label: "SEO", href: "/services/seo" },
+];
+
+const contactMethods = [
+  { label: "Email", value: companyInfo.email, href: `mailto:${companyInfo.email}` },
+  { label: "Phone", value: companyInfo.phone, href: `tel:${companyInfo.phone}` },
+  { label: "WhatsApp", value: "Chat with us", href: "https://wa.me/923207551031?text=Hello%20Kainth%20Solutions%2C%20I%20would%20like%20to%20discuss%20a%20project" },
 ];
 
 const socialIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -164,6 +169,17 @@ export default function Footer() {
                     <Icon className="h-4 w-4" />
                   </a>
                 ))}
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/923207551031?text=Hello%20Kainth%20Solutions%2C%20I%20would%20like%20to%20discuss%20a%20project"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-500 text-white transition-colors hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
+                  title="Chat with us on WhatsApp"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                </a>
               </div>
             </div>
 
@@ -200,6 +216,27 @@ export default function Footer() {
                     >
                       {service.label}
                     </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3.5: Contact Methods */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
+                Get in Touch
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {contactMethods.map((method) => (
+                  <li key={method.label}>
+                    <a
+                      href={method.href}
+                      target={method.href.startsWith("https://") ? "_blank" : undefined}
+                      rel={method.href.startsWith("https://") ? "noopener noreferrer" : undefined}
+                      className="text-sm text-gray-600 transition-colors hover:text-blue-900 dark:text-gray-400 dark:hover:text-blue-400"
+                    >
+                      {method.label}
+                    </a>
                   </li>
                 ))}
               </ul>
