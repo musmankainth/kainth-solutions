@@ -27,11 +27,11 @@ export const companyInfo = {
   email: "info@kainthsolutions.com",
   phone: "+923207551031",
   address: {
-    street: "123 Innovation Drive, Suite 400",
-    city: "San Francisco",
-    state: "CA",
-    zip: "94105",
-    country: "United States",
+    street: "Seven Street, Cavalry Ground",
+    city: "Lahore",
+    state: "Punjab",
+    zip: "54000",
+    country: "Pakistan",
   },
   founded: 2018,
 };
