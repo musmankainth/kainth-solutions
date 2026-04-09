@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { cn } from "@/lib/utils";
+import { companyInfo } from "@/lib/constants";
 import FadeIn from "@/components/animations/FadeIn";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -39,19 +40,19 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@kainthsolutions.com",
-    href: "mailto:hello@kainthsolutions.com",
+    value: companyInfo.email,
+    href: `mailto:${companyInfo.email}`,
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: companyInfo.phone,
+    href: `tel:${companyInfo.phone}`,
   },
   {
     icon: MapPin,
     label: "Address",
-    value: "123 Innovation Drive, Suite 400\nSan Francisco, CA 94105",
+    value: `${companyInfo.address.street}\n${companyInfo.address.city}, ${companyInfo.address.state} ${companyInfo.address.zip}`,
   },
 ];
 
