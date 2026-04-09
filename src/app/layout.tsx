@@ -23,7 +23,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: {
     default: "Kainth Solutions - Web & Mobile Development Agency",
-    template: "%s | Kainth Solutions - Web & Mobile Development Agency",
+    template: "%s | Kainth Solutions",
   },
   description:
     "Kainth Solutions is a full-service digital agency specializing in web development, mobile apps, UI/UX design, and digital marketing. We build products that scale.",
