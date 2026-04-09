@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { z } from "zod/v4";
+import { Resend } from "resend";
 
 // Simple in-memory rate limiter
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -134,8 +135,59 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // In production, you would send an email here using Resend, SendGrid, etc.
-    // For now, we log and return success.
+    // Send email using Resend
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const serviceNames: Record<string, string> = {
+      "web-development": "Web Development",
+      "mobile-app-development": "Mobile App Development",
+      "digital-marketing": "Digital Marketing",
+      "other": "Other",
+    };
+
+    const serviceName = serviceNames[data.service] || data.service;
+
+    // Send notification email to company
+    const adminEmailResult = await resend.emails.send({
+      from: "noreply@kainthsolutions.com",
+      to: "info@kainthsolutions.com",
+      subject: `New Contact Form Submission from ${data.name}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Phone:</strong> ${data.phone || "Not provided"}</p>
+        <p><strong>Service:</strong> ${serviceName}</p>
+        <p><strong>Budget:</strong> ${data.budget || "Not specified"}</p>
+        <p><strong>Message:</strong></p>
+        <p>${data.message.replace(/\n/g, "<br>")}</p>
+        <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+      `,
+    });
+
+    // Send confirmation email to user
+    const userEmailResult = await resend.emails.send({
+      from: "noreply@kainthsolutions.com",
+      to: data.email,
+      subject: "We received your message - Kainth Solutions",
+      html: `
+        <h2>Thank you for contacting Kainth Solutions!</h2>
+        <p>Hi ${data.name},</p>
+        <p>We've received your message and will get back to you within 24 hours.</p>
+        <p><strong>Your Details:</strong></p>
+        <p>Service: ${serviceName}</p>
+        <p>Message: ${data.message.replace(/\n/g, "<br>")}</p>
+        <p>Best regards,<br>Kainth Solutions Team</p>
+      `,
+    });
+
+    if (adminEmailResult.error || userEmailResult.error) {
+      console.error("Email sending error:", {
+        adminError: adminEmailResult.error,
+        userError: userEmailResult.error,
+      });
+    }
+
     console.log("Contact form submission:", {
       name: data.name,
       email: data.email,
@@ -144,6 +196,7 @@ export async function POST(request: NextRequest) {
       budget: data.budget || "Not specified",
       message: data.message,
       timestamp: new Date().toISOString(),
+      emailsSent: !adminEmailResult.error && !userEmailResult.error,
     });
 
     return Response.json(

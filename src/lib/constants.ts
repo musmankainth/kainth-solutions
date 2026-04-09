@@ -24,8 +24,8 @@ export const siteSettings: SiteSettings = {
 export const companyInfo = {
   name: "Kainth Solutions",
   tagline: "Transforming Ideas Into Digital Reality",
-  email: "hello@kainthsolutions.com",
-  phone: "+1 (555) 123-4567",
+  email: "info@kainthsolutions.com",
+  phone: "+923207551031",
   address: {
     street: "123 Innovation Drive, Suite 400",
     city: "San Francisco",
