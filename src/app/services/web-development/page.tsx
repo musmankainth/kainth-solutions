@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/Badge";
 import FadeIn from "@/components/animations/FadeIn";
 import StaggerChildren from "@/components/animations/StaggerChildren";
 import CTASection from "@/components/sections/CTASection";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Web Development Services | Kainth Solutions",
@@ -27,6 +28,25 @@ export const metadata: Metadata = {
       "Websites that perform, engage, and convert. Full-stack web development with modern technologies.",
     url: "https://kainthsolutions.com/services/web-development",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/web-development",
+  },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Web Development",
+  description:
+    "Custom web development services using Next.js, React, and TypeScript. From marketing sites to complex web applications.",
+  provider: {
+    "@type": "Organization",
+    name: "Kainth Solutions",
+    url: "https://kainthsolutions.com",
+  },
+  serviceType: "Web Development",
+  areaServed: "Worldwide",
+  hasOfferingType: "Service",
 };
 
 const features = [
@@ -113,6 +133,7 @@ const process = [
 export default function WebDevelopmentPage() {
   return (
     <>
+      <JsonLd data={serviceSchema} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-white pt-24 pb-16 dark:bg-gray-950">
         <div className="pointer-events-none absolute inset-0">

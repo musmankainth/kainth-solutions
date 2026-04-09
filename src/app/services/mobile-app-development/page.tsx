@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/Badge";
 import FadeIn from "@/components/animations/FadeIn";
 import StaggerChildren from "@/components/animations/StaggerChildren";
 import CTASection from "@/components/sections/CTASection";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Mobile App Development Services | Kainth Solutions",
@@ -27,6 +28,25 @@ export const metadata: Metadata = {
       "Cross-platform mobile apps that users love. React Native & Flutter development.",
     url: "https://kainthsolutions.com/services/mobile-app-development",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/mobile-app-development",
+  },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Mobile App Development",
+  description:
+    "Build beautiful, high-performance mobile apps for iOS and Android with React Native and Flutter.",
+  provider: {
+    "@type": "Organization",
+    name: "Kainth Solutions",
+    url: "https://kainthsolutions.com",
+  },
+  serviceType: "Mobile App Development",
+  areaServed: "Worldwide",
+  hasOfferingType: "Service",
 };
 
 const features = [
@@ -125,6 +145,7 @@ const process = [
 export default function MobileAppDevelopmentPage() {
   return (
     <>
+      <JsonLd data={serviceSchema} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-white pt-24 pb-16 dark:bg-gray-950">
         <div className="pointer-events-none absolute inset-0">

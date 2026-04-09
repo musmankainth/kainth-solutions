@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactSection from "@/components/sections/ContactSection";
 import { Container } from "@/components/ui/Container";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { companyInfo } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -14,6 +15,35 @@ export const metadata: Metadata = {
       "Start your next digital project with Kainth Solutions. Free consultations available.",
     url: "https://kainthsolutions.com/contact",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/contact",
+  },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Kainth Solutions",
+  image: "https://kainthsolutions.com/images/og-image.jpg",
+  description:
+    "Full-service digital agency specializing in web development, mobile apps, UI/UX design, and digital marketing.",
+  telephone: companyInfo.phone,
+  email: companyInfo.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: companyInfo.address.street,
+    addressLocality: companyInfo.address.city,
+    addressRegion: companyInfo.address.state,
+    postalCode: companyInfo.address.zip,
+    addressCountry: companyInfo.address.country,
+  },
+  url: "https://kainthsolutions.com",
+  sameAs: [
+    "https://linkedin.com/company/kainthsolutions",
+    "https://github.com/kainthsolutions",
+    "https://twitter.com/kainthsolutions",
+    "https://instagram.com/kainthsolutions",
+  ],
 };
 
 const contactInfo = [
@@ -42,6 +72,7 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={localBusinessSchema} />
       <ContactSection />
 
       {/* Map & Info Section */}

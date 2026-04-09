@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     title: "Web Development Packages",
     url: "https://kainthsolutions.com/services/web-development/packages",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/web-development/packages",
+  },
 };
 
 const packages = [

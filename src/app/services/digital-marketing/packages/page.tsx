@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     title: "Digital Marketing Packages",
     url: "https://kainthsolutions.com/services/digital-marketing/packages",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/digital-marketing/packages",
+  },
 };
 
 const packages = [

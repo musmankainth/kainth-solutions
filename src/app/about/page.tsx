@@ -28,6 +28,9 @@ export const metadata: Metadata = {
       "Meet the team behind Kainth Solutions and discover our mission to build the digital future.",
     url: "https://kainthsolutions.com/about",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/about",
+  },
 };
 
 const teamMembers = [

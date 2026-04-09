@@ -25,6 +25,9 @@ export const metadata: Metadata = {
       "Web development, mobile apps, and digital marketing services tailored to your business needs.",
     url: "https://kainthsolutions.com/services",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services",
+  },
 };
 
 const services = [

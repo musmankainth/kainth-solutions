@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     title: "Web Development Case Studies",
     url: "https://kainthsolutions.com/services/web-development/case-studies",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/web-development/case-studies",
+  },
 };
 
 const caseStudies = [

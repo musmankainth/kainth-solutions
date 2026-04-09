@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 import StaggerChildren from "@/components/animations/StaggerChildren";
 import CTASection from "@/components/sections/CTASection";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Web Development FAQ | Kainth Solutions",
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Web Development FAQ",
     url: "https://kainthsolutions.com/services/web-development/faq",
+    description: "Find answers to common questions about web development, process, and technologies.",
+  },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/web-development/faq",
   },
 };
 
@@ -144,9 +149,25 @@ const faqs = [
   },
 ];
 
+const faqPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.flatMap((category) =>
+    category.questions.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    }))
+  ),
+};
+
 export default function FAQ() {
   return (
     <>
+      <JsonLd data={faqPageSchema} />
       <section className="py-16 lg:py-20">
         <Container size="narrow">
           <FadeIn>

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     title: "Web Development Technology Stack",
     url: "https://kainthsolutions.com/services/web-development/technology-stack",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/web-development/technology-stack",
+  },
 };
 
 const techStack = [

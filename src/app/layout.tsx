@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { JsonLd } from "@/components/seo/JsonLd";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -65,6 +67,53 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "google-site-verification-code", // Update with actual verification code from Google Search Console
+  },
+  alternates: {
+    canonical: "https://kainthsolutions.com",
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Kainth Solutions",
+  url: "https://kainthsolutions.com",
+  logo: "https://kainthsolutions.com/images/og-image.jpg",
+  description:
+    "Full-service digital agency specializing in web development, mobile apps, UI/UX design, and digital marketing.",
+  sameAs: [
+    "https://linkedin.com/company/kainthsolutions",
+    "https://github.com/kainthsolutions",
+    "https://twitter.com/kainthsolutions",
+    "https://instagram.com/kainthsolutions",
+    "https://youtube.com/@kainthsolutions",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+923207551031",
+    contactType: "Customer Service",
+    email: "info@kainthsolutions.com",
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url: "https://kainthsolutions.com",
+  name: "Kainth Solutions",
+  description:
+    "Full-service digital agency specializing in web development, mobile apps, UI/UX design, and digital marketing.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate:
+        "https://kainthsolutions.com/search?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({
@@ -78,6 +127,10 @@ export default function RootLayout({
       className={`${inter.variable} ${plusJakartaSans.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
+      </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <ThemeProvider
           attribute="class"
@@ -89,6 +142,9 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );

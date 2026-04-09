@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/Badge";
 import FadeIn from "@/components/animations/FadeIn";
 import StaggerChildren from "@/components/animations/StaggerChildren";
 import CTASection from "@/components/sections/CTASection";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Services | Kainth Solutions",
@@ -27,6 +28,25 @@ export const metadata: Metadata = {
       "Marketing that drives real revenue growth. SEO, PPC, and multi-channel campaigns.",
     url: "https://kainthsolutions.com/services/digital-marketing",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/digital-marketing",
+  },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Digital Marketing",
+  description:
+    "Data-driven digital marketing strategies that deliver real ROI. SEO, PPC, social media, content marketing, and email automation.",
+  provider: {
+    "@type": "Organization",
+    name: "Kainth Solutions",
+    url: "https://kainthsolutions.com",
+  },
+  serviceType: "Digital Marketing",
+  areaServed: "Worldwide",
+  hasOfferingType: "Service",
 };
 
 const features = [
@@ -105,6 +125,7 @@ const process = [
 export default function DigitalMarketingPage() {
   return (
     <>
+      <JsonLd data={serviceSchema} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-white pt-24 pb-16 dark:bg-gray-950">
         <div className="pointer-events-none absolute inset-0">

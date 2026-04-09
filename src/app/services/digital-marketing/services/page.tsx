@@ -20,7 +20,11 @@ export const metadata: Metadata = {
   description: "Full-service digital marketing: SEO, SEM, social media, content marketing, email marketing, and analytics.",
   openGraph: {
     title: "Digital Marketing Services",
+    description: "Full-service digital marketing services including SEO, PPC, social media, content marketing, email automation, and analytics.",
     url: "https://kainthsolutions.com/services/digital-marketing/services",
+  },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/digital-marketing/services",
   },
 };
 

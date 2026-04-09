@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     title: "Digital Marketing Case Studies",
     url: "https://kainthsolutions.com/services/digital-marketing/case-studies",
   },
+  alternates: {
+    canonical: "https://kainthsolutions.com/services/digital-marketing/case-studies",
+  },
 };
 
 const caseStudies = [
