@@ -74,7 +74,7 @@ const contactInfo = [
   {
     icon: Clock,
     label: "Business Hours",
-    value: "Mon - Fri: 9:00 AM - 6:00 PM PST",
+    value: "Mon - Fri: 9:00 AM - 6:00 PM PKT",
   },
 ];
 
@@ -88,20 +88,50 @@ export default function ContactPage() {
       <section className="bg-gray-50 py-20 dark:bg-gray-900">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
-            {/* Map Placeholder */}
-            <div className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700">
-              <div className="flex h-80 items-center justify-center bg-gray-200 dark:bg-gray-800 lg:h-full">
-                <div className="text-center">
-                  <MapPin className="mx-auto mb-3 h-12 w-12 text-gray-400 dark:text-gray-500" />
-                  <p className="text-lg font-semibold text-gray-500 dark:text-gray-400">
-                    Interactive Map
-                  </p>
-                  <p className="mt-1 text-sm text-gray-400 dark:text-gray-500">
-                    123 Innovation Drive, Tech Valley, CA 94043
-                  </p>
+            {/* Map */}
+            {(() => {
+              const lat = 31.5081;
+              const lon = 74.3756;
+              const delta = 0.01;
+              const bbox = `${lon - delta},${lat - delta},${lon + delta},${lat + delta}`;
+              const osmSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
+              const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                `${companyInfo.address.street}, ${companyInfo.address.city}, ${companyInfo.address.country}`
+              )}`;
+              const fullAddress = `${companyInfo.address.street}, ${companyInfo.address.city}, ${companyInfo.address.state} ${companyInfo.address.zip}, ${companyInfo.address.country}`;
+              return (
+                <div className="flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+                  <iframe
+                    title={`Map showing ${companyInfo.name} location`}
+                    src={osmSrc}
+                    loading="lazy"
+                    className="h-80 w-full border-0 lg:h-[460px] dark:[color-scheme:light]"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <div className="flex items-start justify-between gap-4 border-t border-gray-200 p-4 dark:border-gray-700">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-blue-900 dark:text-blue-400" />
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                          {companyInfo.name}
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          {fullAddress}
+                        </p>
+                      </div>
+                    </div>
+                    <Link
+                      href={directionsHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 rounded-lg bg-blue-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500"
+                    >
+                      Get directions
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })()}
 
             {/* Contact Info Cards */}
             <div className="grid gap-6 sm:grid-cols-2">

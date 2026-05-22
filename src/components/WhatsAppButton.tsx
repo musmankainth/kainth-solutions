@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
@@ -31,7 +31,7 @@ export default function WhatsAppButton() {
           aria-label="Chat on WhatsApp"
           title="Chat with us on WhatsApp"
         >
-          <MessageCircle className="h-7 w-7" />
+          <WhatsAppIcon className="h-7 w-7" />
         </motion.a>
       )}
     </AnimatePresence>

@@ -11,8 +11,8 @@ import {
   Camera,
   Users,
   Code2,
-  MessageCircle,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { cn } from "@/lib/utils";
 import { companyInfo, socialLinks } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
@@ -178,7 +178,7 @@ export default function Footer() {
                   className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-500 text-white transition-colors hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
                   title="Chat with us on WhatsApp"
                 >
-                  <MessageCircle className="h-4 w-4" />
+                  <WhatsAppIcon className="h-4 w-4" />
                 </a>
               </div>
             </div>
