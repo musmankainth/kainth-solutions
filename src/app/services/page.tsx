@@ -3,6 +3,7 @@ import {
   Monitor,
   Smartphone,
   TrendingUp,
+  Stethoscope,
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
@@ -83,6 +84,24 @@ const services = [
       "Content marketing & copywriting",
       "Email marketing automation",
       "Analytics, reporting & conversion optimization",
+    ],
+  },
+  {
+    icon: Stethoscope,
+    title: "Medical Billing",
+    slug: "medical-billing",
+    badge: "HIPAA Compliant",
+    badgeVariant: "secondary" as const,
+    gradient: "from-emerald-400 to-green-600",
+    description:
+      "We handle end-to-end medical billing and revenue cycle management for practices, clinics, and labs. Our certified billers and coders maximize clean-claim rates, minimize denials, and keep your accounts receivable healthy, so you can focus on patient care while we secure every dollar you have earned.",
+    features: [
+      "Insurance eligibility & benefits verification",
+      "Medical coding (ICD-10, CPT & HCPCS)",
+      "Clearinghouse & EDI 837 claims submission",
+      "Payment posting (ERA/EOB) & reconciliation",
+      "Denial management, appeals & AR follow-up",
+      "HIPAA-compliant workflows & reporting",
     ],
   },
 ];

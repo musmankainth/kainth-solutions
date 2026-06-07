@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Monitor, Smartphone, TrendingUp, ArrowRight } from "lucide-react";
+import { Monitor, Smartphone, TrendingUp, Stethoscope, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -76,6 +76,25 @@ const services: Service[] = [
     gradient: "from-orange-500 to-orange-700",
     iconBg:
       "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-400",
+  },
+  {
+    icon: Stethoscope,
+    title: "Medical Billing",
+    tagline: "Revenue Cycle Optimization",
+    description:
+      "We manage your entire revenue cycle with HIPAA-compliant medical billing and coding. From eligibility verification to denial management, our specialists reduce claim rejections and accelerate reimbursements so your practice gets paid faster.",
+    subServices: [
+      "Insurance Eligibility Verification",
+      "Medical Coding (ICD-10 & CPT)",
+      "Charge Entry & Claims Submission",
+      "Payment Posting & Reconciliation",
+      "Denial Management & Appeals",
+      "AR Follow-Up & Reporting",
+    ],
+    href: "/services/medical-billing",
+    gradient: "from-emerald-500 to-emerald-700",
+    iconBg:
+      "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400",
   },
 ];
 

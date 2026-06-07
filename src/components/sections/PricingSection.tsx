@@ -23,7 +23,7 @@ interface PricingTier {
 const tiers: PricingTier[] = [
   {
     name: "Starter",
-    price: "$2,499",
+    price: "$1,000",
     description: "Perfect for small businesses looking to establish their online presence.",
     features: [
       "5-page responsive website",
@@ -38,7 +38,7 @@ const tiers: PricingTier[] = [
   },
   {
     name: "Professional",
-    price: "$7,499",
+    price: "$1,500",
     description: "Ideal for growing businesses that need advanced features and functionality.",
     features: [
       "Up to 15 pages",

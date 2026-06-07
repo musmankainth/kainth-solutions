@@ -48,6 +48,7 @@ export const navLinks: NavLink[] = [
       { label: "Web Development", href: "/services/web-development" },
       { label: "Mobile App Development", href: "/services/mobile-app-development" },
       { label: "Digital Marketing", href: "/services/digital-marketing" },
+      { label: "Medical Billing", href: "/services/medical-billing" },
     ],
   },
   { label: "Portfolio", href: "/portfolio" },
@@ -116,6 +117,22 @@ export const services: Service[] = [
     ],
     href: "/services/digital-marketing",
   },
+  {
+    id: "medical-billing",
+    title: "Medical Billing",
+    description:
+      "End-to-end medical billing and revenue cycle management for healthcare providers. From eligibility verification to denial management, our certified billers and coders maximize clean-claim rates and accelerate reimbursements.",
+    icon: "Stethoscope",
+    features: [
+      "Insurance eligibility & benefits verification",
+      "Medical coding (ICD-10, CPT & HCPCS)",
+      "Clearinghouse & EDI 837 claims submission",
+      "Payment posting (ERA/EOB) & reconciliation",
+      "Denial management, appeals & AR follow-up",
+      "HIPAA-compliant workflows & reporting",
+    ],
+    href: "/services/medical-billing",
+  },
 ];
 
 // ─── Pricing Tiers ───────────────────────────────────────────────────────────
@@ -125,7 +142,7 @@ export const pricingTiers: PricingTier[] = [
     id: "starter",
     name: "Starter",
     description: "Perfect for small businesses and startups looking to establish their online presence.",
-    price: "$2,999",
+    price: "$1,000",
     period: "per project",
     features: [
       "Responsive website (up to 5 pages)",
@@ -142,7 +159,7 @@ export const pricingTiers: PricingTier[] = [
     id: "professional",
     name: "Professional",
     description: "Ideal for growing businesses that need a robust digital solution with custom features.",
-    price: "$7,999",
+    price: "$1,500",
     period: "per project",
     features: [
       "Custom web application",
