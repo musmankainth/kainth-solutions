@@ -24,7 +24,10 @@ export default function AnimatedCounter({
   className,
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // Trigger as soon as any part of the counter enters the viewport. This also
+  // fires on mount for above-the-fold stats (e.g. the hero on mobile), where a
+  // negative margin would otherwise sit in a dead-zone and never animate.
+  const isInView = useInView(ref, { once: true });
   const shouldReduceMotion = useReducedMotion();
 
   const motionValue = useMotionValue(0);
